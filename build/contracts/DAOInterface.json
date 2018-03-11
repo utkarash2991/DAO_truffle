@@ -1066,9 +1066,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "/*\nThis file is part of the DAO.\n\nThe DAO is free software: you can redistribute it and/or modify\nit under the terms of the GNU lesser General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThe DAO is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU lesser General Public License for more details.\n\nYou should have received a copy of the GNU lesser General Public License\nalong with the DAO.  If not, see <http://www.gnu.org/licenses/>.\n*/\n\nimport \"./ManagedAccount.sol\";\nimport \"./DAO_CreatorInterface.sol\";\nimport \"./TokenInterface.sol\";\nimport \"./TokenCreationInterface.sol\";\n\n/*\nStandard smart contract for a Decentralized Autonomous Organization (DAO)\nto automate organizational governance and decision-making.\n*/\n\n\ncontract DAOInterface is TokenInterface, TokenCreationInterface {\n\n    // The amount of days for which people who try to participate in the\n    // creation by calling the fallback function will still get their ether back\n    uint constant creationGracePeriod = 40 days;\n    // The minimum debate period that a generic proposal can have\n    uint constant minProposalDebatePeriod = 2 weeks;\n    // The minimum debate period that a split proposal can have\n    uint constant minSplitDebatePeriod = 1 weeks;\n    // Period of days inside which it's possible to execute a DAO split\n    uint constant splitExecutionPeriod = 27 days;\n    // Period of time after which the minimum Quorum is halved\n    uint constant quorumHalvingPeriod = 25 weeks;\n    // Period after which a proposal is closed\n    // (used in the case `executeProposal` fails because it throws)\n    uint constant executeProposalPeriod = 10 days;\n    // Denotes the maximum proposal deposit that can be given. It is given as\n    // a fraction of total Ether spent plus balance of the DAO\n    uint constant maxDepositDivisor = 100;\n\n    // Proposals to spend the DAO's ether or to choose a new Curator\n    Proposal[] public proposals;\n    // The quorum needed for each proposal is partially calculated by\n    // totalSupply / minQuorumDivisor\n    uint public minQuorumDivisor;\n    // The unix time of the last time quorum was reached on a proposal\n    uint  public lastTimeMinQuorumMet;\n\n    // Address of the curator\n    address public curator;\n    // The whitelist: List of addresses the DAO is allowed to send ether to\n    mapping (address => bool) public allowedRecipients;\n\n    // Tracks the addresses that own Reward Tokens. Those addresses can only be\n    // DAOs that have split from the original DAO. Conceptually, Reward Tokens\n    // represent the proportion of the rewards that the DAO has the right to\n    // receive. These Reward Tokens are generated when the DAO spends ether.\n    mapping (address => uint) public rewardToken;\n    // Total supply of rewardToken\n    uint public totalRewardToken;\n\n    // The account used to manage the rewards which are to be distributed to the\n    // DAO Token Holders of this DAO\n    ManagedAccount public rewardAccount;\n\n    // The account used to manage the rewards which are to be distributed to\n    // any DAO that holds Reward Tokens\n    ManagedAccount public DAOrewardAccount;\n\n    // Amount of rewards (in wei) already paid out to a certain DAO\n    mapping (address => uint) public DAOpaidOut;\n\n    // Amount of rewards (in wei) already paid out to a certain address\n    mapping (address => uint) public paidOut;\n    // Map of addresses blocked during a vote (not allowed to transfer DAO\n    // tokens). The address points to the proposal ID.\n    mapping (address => uint) public blocked;\n\n    // The minimum deposit (in wei) required to submit any proposal that is not\n    // requesting a new Curator (no deposit is required for splits)\n    uint public proposalDeposit;\n\n    // the accumulated sum of all current proposal deposits\n    uint sumOfProposalDeposits;\n\n    // Contract that is able to create a new DAO (with the same code as\n    // this one), used for splits\n    DAO_CreatorInterface public daoCreator;\n\n    // A proposal with `newCurator == false` represents a transaction\n    // to be issued by this DAO\n    // A proposal with `newCurator == true` represents a DAO split\n    struct Proposal {\n        // The address where the `amount` will go to if the proposal is accepted\n        // or if `newCurator` is true, the proposed Curator of\n        // the new DAO).\n        address recipient;\n        // The amount to transfer to `recipient` if the proposal is accepted.\n        uint amount;\n        // A plain text description of the proposal\n        string description;\n        // A unix timestamp, denoting the end of the voting period\n        uint votingDeadline;\n        // True if the proposal's votes have yet to be counted, otherwise False\n        bool open;\n        // True if quorum has been reached, the votes have been counted, and\n        // the majority said yes\n        bool proposalPassed;\n        // A hash to check validity of a proposal\n        bytes32 proposalHash;\n        // Deposit in wei the creator added when submitting their proposal. It\n        // is taken from the msg.value of a newProposal call.\n        uint proposalDeposit;\n        // True if this proposal is to assign a new Curator\n        bool newCurator;\n        // Data needed for splitting the DAO\n        SplitData[] splitData;\n        // Number of Tokens in favor of the proposal\n        uint yea;\n        // Number of Tokens opposed to the proposal\n        uint nay;\n        // Simple mapping to check if a shareholder has voted for it\n        mapping (address => bool) votedYes;\n        // Simple mapping to check if a shareholder has voted against it\n        mapping (address => bool) votedNo;\n        // Address of the shareholder who created the proposal\n        address creator;\n    }\n\n    // Used only in the case of a newCurator proposal.\n    struct SplitData {\n        // The balance of the current DAO minus the deposit at the time of split\n        uint splitBalance;\n        // The total amount of DAO Tokens in existence at the time of split.\n        uint totalSupply;\n        // Amount of Reward Tokens owned by the DAO at the time of split.\n        uint rewardToken;\n        // The new DAO contract created at the time of split.\n        DAOInterface newDAO;\n    }\n\n    // Used to restrict access to certain functions to only DAO Token Holders\n    modifier onlyTokenholders {_;}\n\n    /// @dev Constructor setting the Curator and the address\n    /// for the contract able to create another DAO as well as the parameters\n    /// for the DAO Token Creation\n    /// @param _curator The Curator\n    /// @param _daoCreator The contract able to (re)create this DAO\n    /// @param _proposalDeposit The deposit to be paid for a regular proposal\n    /// @param _minTokensToCreate Minimum required wei-equivalent tokens\n    ///        to be created for a successful DAO Token Creation\n    /// @param _closingTime Date (in Unix time) of the end of the DAO Token Creation\n    /// @param _privateCreation If zero the DAO Token Creation is open to public, a\n    /// non-zero address means that the DAO Token Creation is only for the address\n    // This is the constructor: it can not be overloaded so it is commented out\n    //  function DAO(\n        //  address _curator,\n        //  DAO_Creator _daoCreator,\n        //  uint _proposalDeposit,\n        //  uint _minTokensToCreate,\n        //  uint _closingTime,\n        //  address _privateCreation\n    //  );\n\n    /// @notice Create Token with `msg.sender` as the beneficiary\n    /// @return Whether the token creation was successful\n    function () payable public ;\n\n\n    /// @dev This function is used to send ether back\n    /// to the DAO, it can also be used to receive payments that should not be\n    /// counted as rewards (donations, grants, etc.)\n    /// @return Whether the DAO received the ether successfully\n    function receiveEther() returns(bool);\n\n    /// @notice `msg.sender` creates a proposal to send `_amount` Wei to\n    /// `_recipient` with the transaction data `_transactionData`. If\n    /// `_newCurator` is true, then this is a proposal that splits the\n    /// DAO and sets `_recipient` as the new DAO's Curator.\n    /// @param _recipient Address of the recipient of the proposed transaction\n    /// @param _amount Amount of wei to be sent with the proposed transaction\n    /// @param _description String describing the proposal\n    /// @param _transactionData Data of the proposed transaction\n    /// @param _debatingPeriod Time used for debating a proposal, at least 2\n    /// weeks for a regular proposal, 10 days for new Curator proposal\n    /// @param _newCurator Bool defining whether this proposal is about\n    /// a new Curator or not\n    /// @return The proposal ID. Needed for voting on the proposal\n    function newProposal(\n        address _recipient,\n        uint _amount,\n        string _description,\n        bytes _transactionData,\n        uint _debatingPeriod,\n        bool _newCurator\n    ) onlyTokenholders returns (uint _proposalID);\n\n    /// @notice Check that the proposal with the ID `_proposalID` matches the\n    /// transaction which sends `_amount` with data `_transactionData`\n    /// to `_recipient`\n    /// @param _proposalID The proposal ID\n    /// @param _recipient The recipient of the proposed transaction\n    /// @param _amount The amount of wei to be sent in the proposed transaction\n    /// @param _transactionData The data of the proposed transaction\n    /// @return Whether the proposal ID matches the transaction data or not\n    function checkProposalCode(\n        uint _proposalID,\n        address _recipient,\n        uint _amount,\n        bytes _transactionData\n    ) constant returns (bool _codeChecksOut);\n\n    /// @notice Vote on proposal `_proposalID` with `_supportsProposal`\n    /// @param _proposalID The proposal ID\n    /// @param _supportsProposal Yes/No - support of the proposal\n    /// @return The vote ID.\n    function vote(\n        uint _proposalID,\n        bool _supportsProposal\n    ) onlyTokenholders returns (uint _voteID);\n\n    /// @notice Checks whether proposal `_proposalID` with transaction data\n    /// `_transactionData` has been voted for or rejected, and executes the\n    /// transaction in the case it has been voted for.\n    /// @param _proposalID The proposal ID\n    /// @param _transactionData The data of the proposed transaction\n    /// @return Whether the proposed transaction has been executed or not\n    function executeProposal(\n        uint _proposalID,\n        bytes _transactionData\n    ) returns (bool _success);\n\n    /// @notice ATTENTION! I confirm to move my remaining ether to a new DAO\n    /// with `_newCurator` as the new Curator, as has been\n    /// proposed in proposal `_proposalID`. This will burn my tokens. This can\n    /// not be undone and will split the DAO into two DAO's, with two\n    /// different underlying tokens.\n    /// @param _proposalID The proposal ID\n    /// @param _newCurator The new Curator of the new DAO\n    /// @dev This function, when called for the first time for this proposal,\n    /// will create a new DAO and send the sender's portion of the remaining\n    /// ether and Reward Tokens to the new DAO. It will also burn the DAO Tokens\n    /// of the sender.\n    function splitDAO(\n        uint _proposalID,\n        address _newCurator\n    ) returns (bool _success);\n\n    /// @dev can only be called by the DAO itself through a proposal\n    /// updates the contract of the DAO by sending all ether and rewardTokens\n    /// to the new DAO. The new DAO needs to be approved by the Curator\n    /// @param _newContract the address of the new contract\n    function newContract(address _newContract);\n\n\n    /// @notice Add a new possible recipient `_recipient` to the whitelist so\n    /// that the DAO can send transactions to them (using proposals)\n    /// @param _recipient New recipient address\n    /// @dev Can only be called by the current Curator\n    /// @return Whether successful or not\n    function changeAllowedRecipients(address _recipient, bool _allowed) external returns (bool _success);\n\n\n    /// @notice Change the minimum deposit required to submit a proposal\n    /// @param _proposalDeposit The new proposal deposit\n    /// @dev Can only be called by this DAO (through proposals with the\n    /// recipient being this DAO itself)\n    function changeProposalDeposit(uint _proposalDeposit) external;\n\n    /// @notice Move rewards from the DAORewards managed account\n    /// @param _toMembers If true rewards are moved to the actual reward account\n    ///                   for the DAO. If not then it's moved to the DAO itself\n    /// @return Whether the call was successful\n    function retrieveDAOReward(bool _toMembers) external returns (bool _success);\n\n    /// @notice Get my portion of the reward that was sent to `rewardAccount`\n    /// @return Whether the call was successful\n    function getMyReward() returns(bool _success);\n\n    /// @notice Withdraw `_account`'s portion of the reward from `rewardAccount`\n    /// to `_account`'s balance\n    /// @return Whether the call was successful\n    function withdrawRewardFor(address _account) internal returns (bool _success);\n\n    /// @notice Send `_amount` tokens to `_to` from `msg.sender`. Prior to this\n    /// getMyReward() is called.\n    /// @param _to The address of the recipient\n    /// @param _amount The amount of tokens to be transfered\n    /// @return Whether the transfer was successful or not\n    function transferWithoutReward(address _to, uint256 _amount) returns (bool success);\n\n    /// @notice Send `_amount` tokens to `_to` from `_from` on the condition it\n    /// is approved by `_from`. Prior to this getMyReward() is called.\n    /// @param _from The address of the sender\n    /// @param _to The address of the recipient\n    /// @param _amount The amount of tokens to be transfered\n    /// @return Whether the transfer was successful or not\n    function transferFromWithoutReward(\n        address _from,\n        address _to,\n        uint256 _amount\n    ) returns (bool success);\n\n    /// @notice Doubles the 'minQuorumDivisor' in the case quorum has not been\n    /// achieved in 52 weeks\n    /// @return Whether the change was successful or not\n    function halveMinQuorum() returns (bool _success);\n\n    /// @return total number of proposals ever created\n    function numberOfProposals() constant returns (uint _numberOfProposals);\n\n    /// @param _proposalID Id of the new curator proposal\n    /// @return Address of the new DAO\n    function getNewDAOAddress(uint _proposalID) constant returns (address _newDAO);\n\n    /// @param _account The address of the account which is checked.\n    /// @return Whether the account is blocked (not allowed to transfer tokens) or not.\n    function isBlocked(address _account) internal returns (bool);\n\n    /// @notice If the caller is blocked by a proposal whose voting deadline\n    /// has exprired then unblock him.\n    /// @return Whether the account is blocked (not allowed to transfer tokens) or not.\n    function unblockMe() returns (bool);\n\n    event ProposalAdded(\n        uint indexed proposalID,\n        address recipient,\n        uint amount,\n        bool newCurator,\n        string description\n    );\n    event Voted(uint indexed proposalID, bool position, address indexed voter);\n    event ProposalTallied(uint indexed proposalID, bool result, uint quorum);\n    event NewCurator(address indexed _newCurator);\n    event AllowedRecipientChanged(address indexed _recipient, bool _allowed);\n}\n",
-  "sourcePath": "/home/utkarash/dao-truffle/contracts/DAOInterface.sol",
+  "sourcePath": "/home/utkarash/DAO_truffle_modified/contracts/DAOInterface.sol",
   "ast": {
-    "absolutePath": "/home/utkarash/dao-truffle/contracts/DAOInterface.sol",
+    "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/DAOInterface.sol",
     "exportedSymbols": {
       "DAOInterface": [
         2109
@@ -1078,7 +1078,7 @@
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "absolutePath": "/home/utkarash/dao-truffle/contracts/ManagedAccount.sol",
+        "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/ManagedAccount.sol",
         "file": "./ManagedAccount.sol",
         "id": 1796,
         "nodeType": "ImportDirective",
@@ -1089,7 +1089,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/home/utkarash/dao-truffle/contracts/DAO_CreatorInterface.sol",
+        "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/DAO_CreatorInterface.sol",
         "file": "./DAO_CreatorInterface.sol",
         "id": 1797,
         "nodeType": "ImportDirective",
@@ -1100,23 +1100,23 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/home/utkarash/dao-truffle/contracts/TokenInterface.sol",
+        "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/TokenInterface.sol",
         "file": "./TokenInterface.sol",
         "id": 1798,
         "nodeType": "ImportDirective",
         "scope": 2110,
-        "sourceUnit": 3054,
+        "sourceUnit": 3055,
         "src": "724:30:1",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "absolutePath": "/home/utkarash/dao-truffle/contracts/TokenCreationInterface.sol",
+        "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/TokenCreationInterface.sol",
         "file": "./TokenCreationInterface.sol",
         "id": 1799,
         "nodeType": "ImportDirective",
         "scope": 2110,
-        "sourceUnit": 2979,
+        "sourceUnit": 2980,
         "src": "755:38:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1130,10 +1130,10 @@
               "id": 1800,
               "name": "TokenInterface",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3053,
+              "referencedDeclaration": 3054,
               "src": "961:14:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TokenInterface_$3053",
+                "typeIdentifier": "t_contract$_TokenInterface_$3054",
                 "typeString": "contract TokenInterface"
               }
             },
@@ -1148,10 +1148,10 @@
               "id": 1802,
               "name": "TokenCreationInterface",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2978,
+              "referencedDeclaration": 2979,
               "src": "977:22:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TokenCreationInterface_$2978",
+                "typeIdentifier": "t_contract$_TokenCreationInterface_$2979",
                 "typeString": "contract TokenCreationInterface"
               }
             },
@@ -1161,8 +1161,8 @@
           }
         ],
         "contractDependencies": [
-          2978,
-          3053
+          2979,
+          3054
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -1170,8 +1170,8 @@
         "id": 2109,
         "linearizedBaseContracts": [
           2109,
-          2978,
-          3053
+          2979,
+          3054
         ],
         "name": "DAOInterface",
         "nodeType": "ContractDefinition",
@@ -4856,7 +4856,7 @@
     "src": "656:15011:1"
   },
   "legacyAST": {
-    "absolutePath": "/home/utkarash/dao-truffle/contracts/DAOInterface.sol",
+    "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/DAOInterface.sol",
     "exportedSymbols": {
       "DAOInterface": [
         2109
@@ -4866,7 +4866,7 @@
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "absolutePath": "/home/utkarash/dao-truffle/contracts/ManagedAccount.sol",
+        "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/ManagedAccount.sol",
         "file": "./ManagedAccount.sol",
         "id": 1796,
         "nodeType": "ImportDirective",
@@ -4877,7 +4877,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/home/utkarash/dao-truffle/contracts/DAO_CreatorInterface.sol",
+        "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/DAO_CreatorInterface.sol",
         "file": "./DAO_CreatorInterface.sol",
         "id": 1797,
         "nodeType": "ImportDirective",
@@ -4888,23 +4888,23 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/home/utkarash/dao-truffle/contracts/TokenInterface.sol",
+        "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/TokenInterface.sol",
         "file": "./TokenInterface.sol",
         "id": 1798,
         "nodeType": "ImportDirective",
         "scope": 2110,
-        "sourceUnit": 3054,
+        "sourceUnit": 3055,
         "src": "724:30:1",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "absolutePath": "/home/utkarash/dao-truffle/contracts/TokenCreationInterface.sol",
+        "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/TokenCreationInterface.sol",
         "file": "./TokenCreationInterface.sol",
         "id": 1799,
         "nodeType": "ImportDirective",
         "scope": 2110,
-        "sourceUnit": 2979,
+        "sourceUnit": 2980,
         "src": "755:38:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -4918,10 +4918,10 @@
               "id": 1800,
               "name": "TokenInterface",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3053,
+              "referencedDeclaration": 3054,
               "src": "961:14:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TokenInterface_$3053",
+                "typeIdentifier": "t_contract$_TokenInterface_$3054",
                 "typeString": "contract TokenInterface"
               }
             },
@@ -4936,10 +4936,10 @@
               "id": 1802,
               "name": "TokenCreationInterface",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2978,
+              "referencedDeclaration": 2979,
               "src": "977:22:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TokenCreationInterface_$2978",
+                "typeIdentifier": "t_contract$_TokenCreationInterface_$2979",
                 "typeString": "contract TokenCreationInterface"
               }
             },
@@ -4949,8 +4949,8 @@
           }
         ],
         "contractDependencies": [
-          2978,
-          3053
+          2979,
+          3054
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -4958,8 +4958,8 @@
         "id": 2109,
         "linearizedBaseContracts": [
           2109,
-          2978,
-          3053
+          2979,
+          3054
         ],
         "name": "DAOInterface",
         "nodeType": "ContractDefinition",
@@ -8649,5 +8649,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-03-10T18:24:34.674Z"
+  "updatedAt": "2018-03-11T18:36:56.928Z"
 }

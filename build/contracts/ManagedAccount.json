@@ -104,14 +104,14 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b6040516040806103fc83398101604052808051906020019091908051906020019091905050816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600060146101000a81548160ff021916908315150217905550505061035d8061009f6000396000f300606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630221038a1461007f57806318bdc79a146100d95780638da5cb5b14610106578063d2cc718f1461015b575b341561006d57600080fd5b34600160008282540192505081905550005b341561008a57600080fd5b6100bf600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091908035906020019091905050610184565b604051808215151515815260200191505060405180910390f35b34156100e457600080fd5b6100ec6102f3565b604051808215151515815260200191505060405180910390f35b341561011157600080fd5b610119610306565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561016657600080fd5b61016e61032b565b6040518082815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415806101e25750600034115b806102525750600060149054906101000a900460ff16801561025157506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff1614155b5b1561025c57600080fd5b8273ffffffffffffffffffffffffffffffffffffffff168260405160006040518083038185876187965a03f192505050156102e8578273ffffffffffffffffffffffffffffffffffffffff167f9735b0cb909f3d21d5c16bbcccd272d85fa11446f6d679f6ecb170d2dabfecfc836040518082815260200191505060405180910390a2600190506102ed565b600090505b92915050565b600060149054906101000a900460ff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600154815600a165627a7a723058201f31de141fd459b561e9576015b5f67b09e5f5c4d4b1f01862b7686d6b2fc9a60029",
-  "deployedBytecode": "0x606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630221038a1461007f57806318bdc79a146100d95780638da5cb5b14610106578063d2cc718f1461015b575b341561006d57600080fd5b34600160008282540192505081905550005b341561008a57600080fd5b6100bf600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091908035906020019091905050610184565b604051808215151515815260200191505060405180910390f35b34156100e457600080fd5b6100ec6102f3565b604051808215151515815260200191505060405180910390f35b341561011157600080fd5b610119610306565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561016657600080fd5b61016e61032b565b6040518082815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415806101e25750600034115b806102525750600060149054906101000a900460ff16801561025157506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff1614155b5b1561025c57600080fd5b8273ffffffffffffffffffffffffffffffffffffffff168260405160006040518083038185876187965a03f192505050156102e8578273ffffffffffffffffffffffffffffffffffffffff167f9735b0cb909f3d21d5c16bbcccd272d85fa11446f6d679f6ecb170d2dabfecfc836040518082815260200191505060405180910390a2600190506102ed565b600090505b92915050565b600060149054906101000a900460ff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600154815600a165627a7a723058201f31de141fd459b561e9576015b5f67b09e5f5c4d4b1f01862b7686d6b2fc9a60029",
+  "bytecode": "0x6060604052341561000f57600080fd5b6040516040806103fc83398101604052808051906020019091908051906020019091905050816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600060146101000a81548160ff021916908315150217905550505061035d8061009f6000396000f300606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630221038a1461007f57806318bdc79a146100d95780638da5cb5b14610106578063d2cc718f1461015b575b341561006d57600080fd5b34600160008282540192505081905550005b341561008a57600080fd5b6100bf600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091908035906020019091905050610184565b604051808215151515815260200191505060405180910390f35b34156100e457600080fd5b6100ec6102f3565b604051808215151515815260200191505060405180910390f35b341561011157600080fd5b610119610306565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561016657600080fd5b61016e61032b565b6040518082815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415806101e25750600034115b806102525750600060149054906101000a900460ff16801561025157506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff1614155b5b1561025c57600080fd5b8273ffffffffffffffffffffffffffffffffffffffff168260405160006040518083038185876187965a03f192505050156102e8578273ffffffffffffffffffffffffffffffffffffffff167f9735b0cb909f3d21d5c16bbcccd272d85fa11446f6d679f6ecb170d2dabfecfc836040518082815260200191505060405180910390a2600190506102ed565b600090505b92915050565b600060149054906101000a900460ff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600154815600a165627a7a72305820caf3ef27cb7699c85c330385bdc5906e5b559784209642134d3aebd676100d9e0029",
+  "deployedBytecode": "0x606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630221038a1461007f57806318bdc79a146100d95780638da5cb5b14610106578063d2cc718f1461015b575b341561006d57600080fd5b34600160008282540192505081905550005b341561008a57600080fd5b6100bf600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091908035906020019091905050610184565b604051808215151515815260200191505060405180910390f35b34156100e457600080fd5b6100ec6102f3565b604051808215151515815260200191505060405180910390f35b341561011157600080fd5b610119610306565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561016657600080fd5b61016e61032b565b6040518082815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415806101e25750600034115b806102525750600060149054906101000a900460ff16801561025157506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff1614155b5b1561025c57600080fd5b8273ffffffffffffffffffffffffffffffffffffffff168260405160006040518083038185876187965a03f192505050156102e8578273ffffffffffffffffffffffffffffffffffffffff167f9735b0cb909f3d21d5c16bbcccd272d85fa11446f6d679f6ecb170d2dabfecfc836040518082815260200191505060405180910390a2600190506102ed565b600090505b92915050565b600060149054906101000a900460ff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600154815600a165627a7a72305820caf3ef27cb7699c85c330385bdc5906e5b559784209642134d3aebd676100d9e0029",
   "sourceMap": "41:827:5:-;;;151:129;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;229:6;221:5;;:14;;;;;;;;;;;;;;;;;;260:13;245:12;;:28;;;;;;;;;;;;;;;;;;151:129;;41:827;;;;;;",
   "deployedSourceMap": "41:827:5:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;495:9;475:16;;:29;;;;;;;;;;;41:827;517:349;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;980:24:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;882:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1080:28;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;517:349:5;576:4;610:5;;;;;;;;;;;596:19;;:10;:19;;;;:36;;;;631:1;619:9;:13;596:36;:77;;;;637:12;;;;;;;;;;;:35;;;;;667:5;;;;;;;;;;;653:19;;:10;:19;;;;637:35;596:77;592:100;;;687:5;;;592:100;706:10;:15;;728:7;706:32;;;;;;;;;;;;;;;;;;;702:158;;;761:10;754:27;;;773:7;754:27;;;;;;;;;;;;;;;;;;802:4;795:11;;;;702:158;844:5;837:12;;517:349;;;;;:::o;980:24:6:-;;;;;;;;;;;;;:::o;882:20::-;;;;;;;;;;;;;:::o;1080:28::-;;;;:::o",
   "source": "import \"./ManagedAccountInterface.sol\";\n\ncontract ManagedAccount is ManagedAccountInterface{\n\n    // The constructor sets the owner of the account\n    function ManagedAccount(address _owner, bool _payOwnerOnly) {\n        owner = _owner;\n        payOwnerOnly = _payOwnerOnly;\n    }\n\n    // When the contract receives a transaction without data this is called.\n    // It counts the amount of ether it receives and stores it in\n    // accumulatedInput.\n    function() {\n        accumulatedInput += msg.value;\n    }\n\n    function payOut(address _recipient, uint _amount) returns (bool) {\n        if (msg.sender != owner || msg.value > 0 || (payOwnerOnly && _recipient != owner))\n            throw;\n        if (_recipient.call.value(_amount)()) {\n            PayOut(_recipient, _amount);\n            return true;\n        } else {\n            return false;\n        }\n    }\n}\n",
-  "sourcePath": "/home/utkarash/dao-truffle/contracts/ManagedAccount.sol",
+  "sourcePath": "/home/utkarash/DAO_truffle_modified/contracts/ManagedAccount.sol",
   "ast": {
-    "absolutePath": "/home/utkarash/dao-truffle/contracts/ManagedAccount.sol",
+    "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/ManagedAccount.sol",
     "exportedSymbols": {
       "ManagedAccount": [
         2420
@@ -121,7 +121,7 @@
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "absolutePath": "/home/utkarash/dao-truffle/contracts/ManagedAccountInterface.sol",
+        "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/ManagedAccountInterface.sol",
         "file": "./ManagedAccountInterface.sol",
         "id": 2346,
         "nodeType": "ImportDirective",
@@ -382,7 +382,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3065,
+                        "referencedDeclaration": 3066,
                         "src": "495:3:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -489,7 +489,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 3065,
+                            "referencedDeclaration": 3066,
                             "src": "596:3:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -552,7 +552,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 3065,
+                            "referencedDeclaration": 3066,
                             "src": "619:3:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -1069,7 +1069,7 @@
     "src": "0:869:5"
   },
   "legacyAST": {
-    "absolutePath": "/home/utkarash/dao-truffle/contracts/ManagedAccount.sol",
+    "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/ManagedAccount.sol",
     "exportedSymbols": {
       "ManagedAccount": [
         2420
@@ -1079,7 +1079,7 @@
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "absolutePath": "/home/utkarash/dao-truffle/contracts/ManagedAccountInterface.sol",
+        "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/ManagedAccountInterface.sol",
         "file": "./ManagedAccountInterface.sol",
         "id": 2346,
         "nodeType": "ImportDirective",
@@ -1340,7 +1340,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3065,
+                        "referencedDeclaration": 3066,
                         "src": "495:3:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1447,7 +1447,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 3065,
+                            "referencedDeclaration": 3066,
                             "src": "596:3:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -1510,7 +1510,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 3065,
+                            "referencedDeclaration": 3066,
                             "src": "619:3:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -2032,5 +2032,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-03-10T18:24:34.677Z"
+  "updatedAt": "2018-03-11T18:36:56.931Z"
 }

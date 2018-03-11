@@ -165,23 +165,23 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "/*\n * Token Creation contract, used by the DAO to create its tokens and initialize\n * its ether. Feel free to modify the divisor method to implement different\n * Token Creation parameters\n*/\n\nimport \"./ManagedAccount.sol\";\n\n\ncontract TokenCreationInterface {\n\n    // End of token creation, in Unix time\n    uint public closingTime;\n    // Minimum fueling goal of the token creation, denominated in tokens to\n    // be created\n    uint public minTokensToCreate;\n    // True if the DAO reached its minimum fueling goal, false otherwise\n    bool public isFueled;\n    // For DAO splits - if privateCreation is 0, then it is a public token\n    // creation, otherwise only the address stored in privateCreation is\n    // allowed to create tokens\n    address public privateCreation;\n    // hold extra ether which has been sent after the DAO token\n    // creation rate has increased\n    ManagedAccount public extraBalance;\n    // tracks the amount of wei given from each contributor (used for refund)\n    mapping (address => uint256) weiGiven;\n\n    /// @dev Constructor setting the minimum fueling goal and the\n    /// end of the Token Creation\n    /// @param _minTokensToCreate Minimum fueling goal in number of\n    ///        Tokens to be created\n    /// @param _closingTime Date (in Unix time) of the end of the Token Creation\n    /// @param _privateCreation Zero means that the creation is public.  A\n    /// non-zero address represents the only address that can create Tokens\n    /// (the address can also create Tokens on behalf of other accounts)\n    // This is the constructor: it can not be overloaded so it is commented out\n    //  function TokenCreation(\n        //  uint _minTokensTocreate,\n        //  uint _closingTime,\n        //  address _privateCreation\n    //  );\n\n    /// @notice Create Token with `_tokenHolder` as the initial owner of the Token\n    /// @param _tokenHolder The address of the Tokens's recipient\n    /// @return Whether the token creation was successful\n    function createTokenProxy(address _tokenHolder) returns (bool success);\n\n    /// @notice Refund `msg.sender` in the case the Token Creation did\n    /// not reach its minimum fueling goal\n    function refund();\n\n    /// @return The divisor used to calculate the token creation rate during\n    /// the creation phase\n    function divisor() constant returns (uint divisor);\n\n    event FuelingToDate(uint value);\n    event CreatedToken(address indexed to, uint amount);\n    event Refund(address indexed to, uint value);\n}\n",
-  "sourcePath": "/home/utkarash/dao-truffle/contracts/TokenCreationInterface.sol",
+  "sourcePath": "/home/utkarash/DAO_truffle_modified/contracts/TokenCreationInterface.sol",
   "ast": {
-    "absolutePath": "/home/utkarash/dao-truffle/contracts/TokenCreationInterface.sol",
+    "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/TokenCreationInterface.sol",
     "exportedSymbols": {
       "TokenCreationInterface": [
-        2978
+        2979
       ]
     },
-    "id": 2979,
+    "id": 2980,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "absolutePath": "/home/utkarash/dao-truffle/contracts/ManagedAccount.sol",
+        "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/ManagedAccount.sol",
         "file": "./ManagedAccount.sol",
-        "id": 2932,
+        "id": 2933,
         "nodeType": "ImportDirective",
-        "scope": 2979,
+        "scope": 2980,
         "sourceUnit": 2421,
         "src": "192:30:10",
         "symbolAliases": [],
@@ -193,19 +193,19 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 2978,
+        "id": 2979,
         "linearizedBaseContracts": [
-          2978
+          2979
         ],
         "name": "TokenCreationInterface",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2934,
+            "id": 2935,
             "name": "closingTime",
             "nodeType": "VariableDeclaration",
-            "scope": 2978,
+            "scope": 2979,
             "src": "307:23:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -214,7 +214,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2933,
+              "id": 2934,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "307:4:10",
@@ -228,10 +228,10 @@
           },
           {
             "constant": false,
-            "id": 2936,
+            "id": 2937,
             "name": "minTokensToCreate",
             "nodeType": "VariableDeclaration",
-            "scope": 2978,
+            "scope": 2979,
             "src": "430:29:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -240,7 +240,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2935,
+              "id": 2936,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "430:4:10",
@@ -254,10 +254,10 @@
           },
           {
             "constant": false,
-            "id": 2938,
+            "id": 2939,
             "name": "isFueled",
             "nodeType": "VariableDeclaration",
-            "scope": 2978,
+            "scope": 2979,
             "src": "538:20:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -266,7 +266,7 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 2937,
+              "id": 2938,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
               "src": "538:4:10",
@@ -280,10 +280,10 @@
           },
           {
             "constant": false,
-            "id": 2940,
+            "id": 2941,
             "name": "privateCreation",
             "nodeType": "VariableDeclaration",
-            "scope": 2978,
+            "scope": 2979,
             "src": "744:30:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -292,7 +292,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 2939,
+              "id": 2940,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "744:7:10",
@@ -306,10 +306,10 @@
           },
           {
             "constant": false,
-            "id": 2942,
+            "id": 2943,
             "name": "extraBalance",
             "nodeType": "VariableDeclaration",
-            "scope": 2978,
+            "scope": 2979,
             "src": "879:34:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -319,7 +319,7 @@
             },
             "typeName": {
               "contractScope": null,
-              "id": 2941,
+              "id": 2942,
               "name": "ManagedAccount",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 2420,
@@ -334,10 +334,10 @@
           },
           {
             "constant": false,
-            "id": 2946,
+            "id": 2947,
             "name": "weiGiven",
             "nodeType": "VariableDeclaration",
-            "scope": 2978,
+            "scope": 2979,
             "src": "997:37:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -346,9 +346,9 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 2945,
+              "id": 2946,
               "keyType": {
-                "id": 2943,
+                "id": 2944,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "1006:7:10",
@@ -364,7 +364,7 @@
                 "typeString": "mapping(address => uint256)"
               },
               "valueType": {
-                "id": 2944,
+                "id": 2945,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
                 "src": "1017:7:10",
@@ -379,7 +379,7 @@
           },
           {
             "body": null,
-            "id": 2953,
+            "id": 2954,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -387,15 +387,15 @@
             "name": "createTokenProxy",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2949,
+              "id": 2950,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2948,
+                  "id": 2949,
                   "name": "_tokenHolder",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2953,
+                  "scope": 2954,
                   "src": "2012:20:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -404,7 +404,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2947,
+                    "id": 2948,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2012:7:10",
@@ -421,15 +421,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2952,
+              "id": 2953,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2951,
+                  "id": 2952,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2953,
+                  "scope": 2954,
                   "src": "2043:12:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -438,7 +438,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2950,
+                    "id": 2951,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "2043:4:10",
@@ -453,7 +453,7 @@
               ],
               "src": "2042:14:10"
             },
-            "scope": 2978,
+            "scope": 2979,
             "src": "1986:71:10",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -461,7 +461,7 @@
           },
           {
             "body": null,
-            "id": 2956,
+            "id": 2957,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -469,19 +469,19 @@
             "name": "refund",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2954,
+              "id": 2955,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2192:2:10"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2955,
+              "id": 2956,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2194:0:10"
             },
-            "scope": 2978,
+            "scope": 2979,
             "src": "2177:18:10",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -489,7 +489,7 @@
           },
           {
             "body": null,
-            "id": 2961,
+            "id": 2962,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -497,22 +497,22 @@
             "name": "divisor",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2957,
+              "id": 2958,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2321:2:10"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2960,
+              "id": 2961,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2959,
+                  "id": 2960,
                   "name": "divisor",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2961,
+                  "scope": 2962,
                   "src": "2342:12:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -521,7 +521,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2958,
+                    "id": 2959,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2342:4:10",
@@ -536,7 +536,7 @@
               ],
               "src": "2341:14:10"
             },
-            "scope": 2978,
+            "scope": 2979,
             "src": "2305:51:10",
             "stateMutability": "view",
             "superFunction": null,
@@ -544,20 +544,20 @@
           },
           {
             "anonymous": false,
-            "id": 2965,
+            "id": 2966,
             "name": "FuelingToDate",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2964,
+              "id": 2965,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2963,
+                  "id": 2964,
                   "indexed": false,
                   "name": "value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2965,
+                  "scope": 2966,
                   "src": "2382:10:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -566,7 +566,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2962,
+                    "id": 2963,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2382:4:10",
@@ -585,20 +585,20 @@
           },
           {
             "anonymous": false,
-            "id": 2971,
+            "id": 2972,
             "name": "CreatedToken",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2970,
+              "id": 2971,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2967,
+                  "id": 2968,
                   "indexed": true,
                   "name": "to",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2971,
+                  "scope": 2972,
                   "src": "2418:18:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -607,7 +607,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2966,
+                    "id": 2967,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2418:7:10",
@@ -621,11 +621,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2969,
+                  "id": 2970,
                   "indexed": false,
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2971,
+                  "scope": 2972,
                   "src": "2438:11:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -634,7 +634,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2968,
+                    "id": 2969,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2438:4:10",
@@ -653,20 +653,20 @@
           },
           {
             "anonymous": false,
-            "id": 2977,
+            "id": 2978,
             "name": "Refund",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2976,
+              "id": 2977,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2973,
+                  "id": 2974,
                   "indexed": true,
                   "name": "to",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2977,
+                  "scope": 2978,
                   "src": "2469:18:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -675,7 +675,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2972,
+                    "id": 2973,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2469:7:10",
@@ -689,11 +689,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2975,
+                  "id": 2976,
                   "indexed": false,
                   "name": "value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2977,
+                  "scope": 2978,
                   "src": "2489:10:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -702,7 +702,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2974,
+                    "id": 2975,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2489:4:10",
@@ -720,28 +720,28 @@
             "src": "2456:45:10"
           }
         ],
-        "scope": 2979,
+        "scope": 2980,
         "src": "225:2278:10"
       }
     ],
     "src": "192:2312:10"
   },
   "legacyAST": {
-    "absolutePath": "/home/utkarash/dao-truffle/contracts/TokenCreationInterface.sol",
+    "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/TokenCreationInterface.sol",
     "exportedSymbols": {
       "TokenCreationInterface": [
-        2978
+        2979
       ]
     },
-    "id": 2979,
+    "id": 2980,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "absolutePath": "/home/utkarash/dao-truffle/contracts/ManagedAccount.sol",
+        "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/ManagedAccount.sol",
         "file": "./ManagedAccount.sol",
-        "id": 2932,
+        "id": 2933,
         "nodeType": "ImportDirective",
-        "scope": 2979,
+        "scope": 2980,
         "sourceUnit": 2421,
         "src": "192:30:10",
         "symbolAliases": [],
@@ -753,19 +753,19 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 2978,
+        "id": 2979,
         "linearizedBaseContracts": [
-          2978
+          2979
         ],
         "name": "TokenCreationInterface",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2934,
+            "id": 2935,
             "name": "closingTime",
             "nodeType": "VariableDeclaration",
-            "scope": 2978,
+            "scope": 2979,
             "src": "307:23:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -774,7 +774,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2933,
+              "id": 2934,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "307:4:10",
@@ -788,10 +788,10 @@
           },
           {
             "constant": false,
-            "id": 2936,
+            "id": 2937,
             "name": "minTokensToCreate",
             "nodeType": "VariableDeclaration",
-            "scope": 2978,
+            "scope": 2979,
             "src": "430:29:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -800,7 +800,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2935,
+              "id": 2936,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "430:4:10",
@@ -814,10 +814,10 @@
           },
           {
             "constant": false,
-            "id": 2938,
+            "id": 2939,
             "name": "isFueled",
             "nodeType": "VariableDeclaration",
-            "scope": 2978,
+            "scope": 2979,
             "src": "538:20:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -826,7 +826,7 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 2937,
+              "id": 2938,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
               "src": "538:4:10",
@@ -840,10 +840,10 @@
           },
           {
             "constant": false,
-            "id": 2940,
+            "id": 2941,
             "name": "privateCreation",
             "nodeType": "VariableDeclaration",
-            "scope": 2978,
+            "scope": 2979,
             "src": "744:30:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -852,7 +852,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 2939,
+              "id": 2940,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "744:7:10",
@@ -866,10 +866,10 @@
           },
           {
             "constant": false,
-            "id": 2942,
+            "id": 2943,
             "name": "extraBalance",
             "nodeType": "VariableDeclaration",
-            "scope": 2978,
+            "scope": 2979,
             "src": "879:34:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -879,7 +879,7 @@
             },
             "typeName": {
               "contractScope": null,
-              "id": 2941,
+              "id": 2942,
               "name": "ManagedAccount",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 2420,
@@ -894,10 +894,10 @@
           },
           {
             "constant": false,
-            "id": 2946,
+            "id": 2947,
             "name": "weiGiven",
             "nodeType": "VariableDeclaration",
-            "scope": 2978,
+            "scope": 2979,
             "src": "997:37:10",
             "stateVariable": true,
             "storageLocation": "default",
@@ -906,9 +906,9 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 2945,
+              "id": 2946,
               "keyType": {
-                "id": 2943,
+                "id": 2944,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "1006:7:10",
@@ -924,7 +924,7 @@
                 "typeString": "mapping(address => uint256)"
               },
               "valueType": {
-                "id": 2944,
+                "id": 2945,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
                 "src": "1017:7:10",
@@ -939,7 +939,7 @@
           },
           {
             "body": null,
-            "id": 2953,
+            "id": 2954,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -947,15 +947,15 @@
             "name": "createTokenProxy",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2949,
+              "id": 2950,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2948,
+                  "id": 2949,
                   "name": "_tokenHolder",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2953,
+                  "scope": 2954,
                   "src": "2012:20:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -964,7 +964,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2947,
+                    "id": 2948,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2012:7:10",
@@ -981,15 +981,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2952,
+              "id": 2953,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2951,
+                  "id": 2952,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2953,
+                  "scope": 2954,
                   "src": "2043:12:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -998,7 +998,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2950,
+                    "id": 2951,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "2043:4:10",
@@ -1013,7 +1013,7 @@
               ],
               "src": "2042:14:10"
             },
-            "scope": 2978,
+            "scope": 2979,
             "src": "1986:71:10",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1021,7 +1021,7 @@
           },
           {
             "body": null,
-            "id": 2956,
+            "id": 2957,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1029,19 +1029,19 @@
             "name": "refund",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2954,
+              "id": 2955,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2192:2:10"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2955,
+              "id": 2956,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2194:0:10"
             },
-            "scope": 2978,
+            "scope": 2979,
             "src": "2177:18:10",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1049,7 +1049,7 @@
           },
           {
             "body": null,
-            "id": 2961,
+            "id": 2962,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1057,22 +1057,22 @@
             "name": "divisor",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2957,
+              "id": 2958,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2321:2:10"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2960,
+              "id": 2961,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2959,
+                  "id": 2960,
                   "name": "divisor",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2961,
+                  "scope": 2962,
                   "src": "2342:12:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1081,7 +1081,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2958,
+                    "id": 2959,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2342:4:10",
@@ -1096,7 +1096,7 @@
               ],
               "src": "2341:14:10"
             },
-            "scope": 2978,
+            "scope": 2979,
             "src": "2305:51:10",
             "stateMutability": "view",
             "superFunction": null,
@@ -1104,20 +1104,20 @@
           },
           {
             "anonymous": false,
-            "id": 2965,
+            "id": 2966,
             "name": "FuelingToDate",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2964,
+              "id": 2965,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2963,
+                  "id": 2964,
                   "indexed": false,
                   "name": "value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2965,
+                  "scope": 2966,
                   "src": "2382:10:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1126,7 +1126,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2962,
+                    "id": 2963,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2382:4:10",
@@ -1145,20 +1145,20 @@
           },
           {
             "anonymous": false,
-            "id": 2971,
+            "id": 2972,
             "name": "CreatedToken",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2970,
+              "id": 2971,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2967,
+                  "id": 2968,
                   "indexed": true,
                   "name": "to",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2971,
+                  "scope": 2972,
                   "src": "2418:18:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1167,7 +1167,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2966,
+                    "id": 2967,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2418:7:10",
@@ -1181,11 +1181,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2969,
+                  "id": 2970,
                   "indexed": false,
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2971,
+                  "scope": 2972,
                   "src": "2438:11:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1194,7 +1194,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2968,
+                    "id": 2969,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2438:4:10",
@@ -1213,20 +1213,20 @@
           },
           {
             "anonymous": false,
-            "id": 2977,
+            "id": 2978,
             "name": "Refund",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2976,
+              "id": 2977,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2973,
+                  "id": 2974,
                   "indexed": true,
                   "name": "to",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2977,
+                  "scope": 2978,
                   "src": "2469:18:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1235,7 +1235,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2972,
+                    "id": 2973,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2469:7:10",
@@ -1249,11 +1249,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2975,
+                  "id": 2976,
                   "indexed": false,
                   "name": "value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2977,
+                  "scope": 2978,
                   "src": "2489:10:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1262,7 +1262,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2974,
+                    "id": 2975,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2489:4:10",
@@ -1280,7 +1280,7 @@
             "src": "2456:45:10"
           }
         ],
-        "scope": 2979,
+        "scope": 2980,
         "src": "225:2278:10"
       }
     ],
@@ -1292,5 +1292,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-03-10T18:24:34.679Z"
+  "updatedAt": "2018-03-11T18:36:56.933Z"
 }

@@ -38,9 +38,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "contract DAO_CreatorInterface {\n    function createDAO(\n        address _curator,\n        uint _proposalDeposit,\n        uint _minTokensToCreate,\n        uint _closingTime\n    ) returns (address _newDAO);\n}\n",
-  "sourcePath": "/home/utkarash/dao-truffle/contracts/DAO_CreatorInterface.sol",
+  "sourcePath": "/home/utkarash/DAO_truffle_modified/contracts/DAO_CreatorInterface.sol",
   "ast": {
-    "absolutePath": "/home/utkarash/dao-truffle/contracts/DAO_CreatorInterface.sol",
+    "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/DAO_CreatorInterface.sol",
     "exportedSymbols": {
       "DAO_CreatorInterface": [
         2155
@@ -230,7 +230,7 @@
     "src": "0:207:3"
   },
   "legacyAST": {
-    "absolutePath": "/home/utkarash/dao-truffle/contracts/DAO_CreatorInterface.sol",
+    "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/DAO_CreatorInterface.sol",
     "exportedSymbols": {
       "DAO_CreatorInterface": [
         2155
@@ -425,5 +425,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-03-10T18:24:34.676Z"
+  "updatedAt": "2018-03-11T18:36:56.930Z"
 }

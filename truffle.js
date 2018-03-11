@@ -9,8 +9,14 @@ module.exports = {
     ],
     "images/": "images/"
   },
-  rpc: {
-    host: "localhost",
-    port: 13371
+  networks: {
+    development: {
+      host: "localhost",
+      port: 8545,
+      network_id: "*", // Match any network id
+      //gas: 4600000
+      gas: 6712388,
+gasPrice: 65000000000,
+    }
   }
 };

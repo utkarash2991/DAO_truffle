@@ -89,9 +89,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "/*\nThis file is part of the DAO.\n\nThe DAO is free software: you can redistribute it and/or modify\nit under the terms of the GNU lesser General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThe DAO is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU lesser General Public License for more details.\n\nYou should have received a copy of the GNU lesser General Public License\nalong with the DAO.  If not, see <http://www.gnu.org/licenses/>.\n*/\n\n\n/*\nBasic account, used by the DAO contract to separately manage both the rewards\nand the extraBalance accounts.\n*/\n\ncontract ManagedAccountInterface {\n    // The only address with permission to withdraw from this account\n    address public owner;\n    // If true, only the owner of the account can receive ether from it\n    bool public payOwnerOnly;\n    // The sum of ether (in wei) which has been sent to this contract\n    uint public accumulatedInput;\n\n    /// @notice Sends `_amount` of wei to _recipient\n    /// @param _amount The amount of wei to send to `_recipient`\n    /// @param _recipient The address to receive `_amount` of wei\n    /// @return True if the send completed\n    function payOut(address _recipient, uint _amount) returns (bool);\n\n    event PayOut(address indexed _recipient, uint _amount);\n}\n",
-  "sourcePath": "/home/utkarash/dao-truffle/contracts/ManagedAccountInterface.sol",
+  "sourcePath": "/home/utkarash/DAO_truffle_modified/contracts/ManagedAccountInterface.sol",
   "ast": {
-    "absolutePath": "/home/utkarash/dao-truffle/contracts/ManagedAccountInterface.sol",
+    "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/ManagedAccountInterface.sol",
     "exportedSymbols": {
       "ManagedAccountInterface": [
         2443
@@ -375,7 +375,7 @@
     "src": "773:698:6"
   },
   "legacyAST": {
-    "absolutePath": "/home/utkarash/dao-truffle/contracts/ManagedAccountInterface.sol",
+    "absolutePath": "/home/utkarash/DAO_truffle_modified/contracts/ManagedAccountInterface.sol",
     "exportedSymbols": {
       "ManagedAccountInterface": [
         2443
@@ -664,5 +664,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-03-10T18:24:34.677Z"
+  "updatedAt": "2018-03-11T18:36:56.931Z"
 }
